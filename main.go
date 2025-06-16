@@ -19,6 +19,7 @@ import (
 var (
 	basePath    = String("BASE_PATH", "/api/v1")
 	port        = String("PORT", ":80")
+	host        = String("HOST", "127.0.0.1")
 	templateDir = String("TEMPLATE_DIR", "templates/BAC")
 )
 
@@ -29,8 +30,8 @@ var (
 func main() {
 	r := chi.NewRouter()
 
-	docs.SwaggerInfo.Host = "localhost:80"
-	docs.SwaggerInfo.BasePath = "/api/v1"
+	docs.SwaggerInfo.Host = fmt.Sprintf("%s%s", host, port)
+	docs.SwaggerInfo.BasePath = basePath
 
 	r.Route(basePath, func(r chi.Router) {
 		r.Post("/compile", Compile)
@@ -43,7 +44,7 @@ func main() {
 }
 
 type CompileRequest struct {
-	Template string `json:"template"`
+	Tex string `json:"tex"`
 }
 
 // Compile compiles a LaTeX template to PDF
@@ -60,7 +61,7 @@ type CompileRequest struct {
 // @Router /compile [post]
 func Compile(w http.ResponseWriter, r *http.Request) {
 	var req CompileRequest
-	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.Template == "" {
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.Tex == "" {
 		http.Error(w, `{"error":"Invalid request, must provide LaTeX template"}`, http.StatusBadRequest)
 		return
 	}
@@ -75,7 +76,7 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 	defer os.RemoveAll(dir) // Clean up temp files
 
 	texPath := filepath.Join(dir, "input.tex")
-	if err := os.WriteFile(texPath, []byte(req.Template), 0644); err != nil {
+	if err := os.WriteFile(texPath, []byte(req.Tex), 0644); err != nil {
 		http.Error(w, `{"error":"Failed to write template file"}`, http.StatusInternalServerError)
 		return
 	}

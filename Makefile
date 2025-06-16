@@ -2,11 +2,11 @@ APP_NAME := pdf-compiler
 TEMPLATES_REPO := git@github.com:GEWIS/latex-templates.git
 TEMPLATES_DIR := templates
 
-.PHONY: all build swag templates:sync clean
+.PHONY: all build swag templates_sync clean
 
-all: templates:sync swag build
+all: templates_sync swag build
 
-templates:sync:
+templates_sync:
 	@if [ -d "$(TEMPLATES_DIR)" ]; then \
 		echo "Removing existing templates directory..."; \
 		rm -rf $(TEMPLATES_DIR); \

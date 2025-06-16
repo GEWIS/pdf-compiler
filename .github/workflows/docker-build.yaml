@@ -1,0 +1,16 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    uses: GEWIS/actions/.github/workflows/docker-build.yml@v1
+    with:
+      projects: '["."]'
+      docker-registry: 'abc.docker-registry.gewis.nl'
+    secrets:
+      REGISTRY_USERNAME: ${{ secrets.SVC_GH_ABCEOU_USERNAME }}
+      REGISTRY_PASSWORD: ${{ secrets.SVC_GH_ABCEOU_PWD }}

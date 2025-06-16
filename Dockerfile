@@ -1,26 +1,11 @@
-# 1. Build stage
-FROM golang:1.22-alpine AS builder
-
-# Install make, git, and swag
-RUN apk add --no-cache make git curl
-RUN go install github.com/swaggo/swag/cmd/swag@latest
+FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
 COPY . .
 
-# Make sure $GOPATH/bin is in PATH for swag
-ENV PATH=$PATH:/go/bin
+RUN go build -o pdf-compiler .
 
-# Run 'make all': sync templates, run swag, build
-RUN make all
-
-# 2. Final stage: minimal image with pdflatex
-FROM ubuntu:22.04
-
-# Install pdflatex (texlive)
-RUN apt-get update && \
-    apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra git && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+FROM abc.docker-registry.gewis.nl/eou/texlive:22.04
 
 WORKDIR /app
 
