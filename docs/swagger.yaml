@@ -1,0 +1,48 @@
+basePath: /
+definitions:
+  main.CompileRequest:
+    properties:
+      template:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: A simple API to compile LaTeX templates to
+  title: PDF Compiler
+  version: "1.0"
+paths:
+  /compile:
+    post:
+      consumes:
+      - application/json
+      description: Compiles a LaTeX template and returns a PDF
+      parameters:
+      - description: LaTeX template
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/main.CompileRequest'
+      produces:
+      - application/pdf
+      responses:
+        "200":
+          description: PDF file
+          schema:
+            type: file
+        "400":
+          description: Invalid request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Compilation error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Compile LaTeX template
+      tags:
+      - Compile
+swagger: "2.0"
