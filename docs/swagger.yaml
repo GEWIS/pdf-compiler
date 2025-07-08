@@ -2,7 +2,7 @@ basePath: /
 definitions:
   main.CompileRequest:
     properties:
-      template:
+      tex:
         type: string
     type: object
 info:

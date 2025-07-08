@@ -72,7 +72,7 @@ const docTemplate = `{
         "main.CompileRequest": {
             "type": "object",
             "properties": {
-                "template": {
+                "tex": {
                     "type": "string"
                 }
             }
