@@ -3,6 +3,11 @@ definitions:
   main.CompileRequest:
     properties:
       tex:
+        example: |-
+          \documentclass{article}
+          \begin{document}
+          Hello, world!
+          \end{document}
         type: string
     type: object
 info:

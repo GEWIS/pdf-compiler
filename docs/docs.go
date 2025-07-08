@@ -73,7 +73,8 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "tex": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "\\documentclass{article}\n\\begin{document}\nHello, world!\n\\end{document}"
                 }
             }
         }
