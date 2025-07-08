@@ -19,8 +19,8 @@ import (
 var (
 	basePath    = String("BASE_PATH", "/api/v1")
 	port        = String("PORT", ":80")
-	host        = String("HOST", "127.0.0.1")
-	templateDir = String("TEMPLATE_DIR", "templates/BAC")
+	host        = String("HOST", "localhost:8080")
+	templateDir = String("TEMPLATE_DIR", "templates")
 )
 
 // @title PDF Compiler
@@ -30,7 +30,7 @@ var (
 func main() {
 	r := chi.NewRouter()
 
-	docs.SwaggerInfo.Host = fmt.Sprintf("%s%s", host, port)
+	docs.SwaggerInfo.Host = host
 	docs.SwaggerInfo.BasePath = basePath
 
 	r.Route(basePath, func(r chi.Router) {
@@ -44,7 +44,7 @@ func main() {
 }
 
 type CompileRequest struct {
-	Tex string `json:"tex"`
+	Tex string `json:"tex" example:"\\documentclass{article}\n\\begin{document}\nHello, world!\n\\end{document}"`
 }
 
 // Compile compiles a LaTeX template to PDF
