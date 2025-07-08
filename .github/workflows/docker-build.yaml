@@ -11,6 +11,7 @@ jobs:
     with:
       projects: '["."]'
       docker-registry: 'abc.docker-registry.gewis.nl'
+      prepare-command: "git clone --depth=1 https://github.com/GEWIS/latex-templates.git templates"
     secrets:
       REGISTRY_USERNAME: ${{ secrets.SVC_GH_ABCEOU_USERNAME }}
       REGISTRY_PASSWORD: ${{ secrets.SVC_GH_ABCEOU_PWD }}
