@@ -11,7 +11,6 @@ WORKDIR /app
 
 # Copy Go binary and assets from builder
 COPY --from=builder /app/pdf-compiler .
-COPY --from=builder /app/templates ./templates
 COPY --from=builder /app/docs ./docs
 
 EXPOSE 80
