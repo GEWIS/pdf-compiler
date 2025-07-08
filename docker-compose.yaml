@@ -1,0 +1,23 @@
+services:
+  templates:
+    image: abc.docker-registry.gewis.nl/eou/templates:latest
+    volumes:
+      - templates-data:/data/templates/BAC
+    command: ["sleep", "infinity"]
+
+  pdf-compiler:
+    image: abc.docker-registry.gewis.nl/eou/pdf-compiler:latest
+    ports:
+      - "8080:80"
+    environment:
+      - BASE_PATH=/api/v1
+      - HOST=localhost:8080
+      - TEMPLATE_DIR=/templates
+      - PATH=/usr/bin:$PATH
+    depends_on:
+      - templates
+    volumes:
+      - templates-data:/templates:ro
+
+volumes:
+  templates-data:
