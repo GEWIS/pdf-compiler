@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    uses: GEWIS/actions/.github/workflows/docker-build.yml@v1
+    uses: GEWIS/actions/.github/workflows/docker-build.yml@v1.8.1
     with:
       projects: '["."]'
       docker-registry: 'abc.docker-registry.gewis.nl'
