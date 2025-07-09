@@ -5,7 +5,7 @@ COPY . .
 
 RUN go build -o pdf-compiler .
 
-FROM abc.docker-registry.gewis.nl/eou/texlive:22.04
+FROM abc.docker-registry.gewis.nl/eou/texlive-light:22.04
 
 WORKDIR /app
 
