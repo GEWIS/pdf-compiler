@@ -24,12 +24,7 @@ export const createClient = (config: Config = {}): Client => {
     return getConfig();
   };
 
-  const interceptors = createInterceptors<
-    Request,
-    Response,
-    unknown,
-    RequestOptions
-  >();
+  const interceptors = createInterceptors<Request, Response, unknown, RequestOptions>();
 
   const request: Client['request'] = async (options) => {
     const opts = {
@@ -71,7 +66,7 @@ export const createClient = (config: Config = {}): Client => {
 
     // fetch must be assigned here, otherwise it would throw the error:
     // TypeError: Failed to execute 'fetch' on 'Window': Illegal invocation
-    const _fetch = opts.fetch!;
+    const _fetch = opts.fetch;
     let response = await _fetch(request);
 
     for (const fn of interceptors.response._fns) {
@@ -86,10 +81,7 @@ export const createClient = (config: Config = {}): Client => {
     };
 
     if (response.ok) {
-      if (
-        response.status === 204 ||
-        response.headers.get('Content-Length') === '0'
-      ) {
+      if (response.status === 204 || response.headers.get('Content-Length') === '0') {
         return opts.responseStyle === 'data'
           ? {}
           : {
@@ -99,9 +91,7 @@ export const createClient = (config: Config = {}): Client => {
       }
 
       const parseAs =
-        (opts.parseAs === 'auto'
-          ? getParseAs(response.headers.get('Content-Type'))
-          : opts.parseAs) ?? 'json';
+        (opts.parseAs === 'auto' ? getParseAs(response.headers.get('Content-Type')) : opts.parseAs) ?? 'json';
 
       if (parseAs === 'stream') {
         return opts.responseStyle === 'data'

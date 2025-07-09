@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-lint:
+  build-and-lint-server:
     uses: GEWIS/actions/.github/workflows/lint-and-build-go.yml@v1
     with:
       go-version: "^1.24.0"
@@ -17,3 +17,16 @@ jobs:
       format: true
       build: true
       test: true
+
+  build-and-lint-client:
+    uses: GEWIS/actions/.github/workflows/lint-and-build-yarn.yml@v1
+    with:
+      node-version: "^22.0.0"
+      lint: true
+      format: true
+      build: true
+      test: true
+      working-directory: './client'
+      prepare-command: 'docker build . -t test-image && docker compose -f docker-compose.test.yaml up -d && sleep 2'
+      cleanup-command: 'docker compose -f docker-compose.test.yaml down'
+

@@ -1,0 +1,24 @@
+services:
+  texlive-packages:
+    image: texlive/texlive:latest
+    volumes:
+      - texlive-pkgs:/usr/local/texlive
+    command: ["sleep", "infinity"]
+
+  pdf-compiler:
+    image: test-image
+    container_name: pdf-compiler
+    ports:
+      - "8080:80"
+    environment:
+      - BASE_PATH=/api/v1
+      - HOST=localhost:8080
+      - TEMPLATE_DIR=/templates/BAC
+      - PATH=/usr/bin:$PATH
+    depends_on:
+      - texlive-packages
+    volumes:
+      - texlive-pkgs:/usr/share/texlive:ro
+
+volumes:
+  texlive-pkgs:

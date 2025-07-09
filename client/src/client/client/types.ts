@@ -1,8 +1,5 @@
 import type { Auth } from '../core/auth';
-import type {
-  Client as CoreClient,
-  Config as CoreConfig,
-} from '../core/types';
+import type { Client as CoreClient, Config as CoreConfig } from '../core/types';
 import type { Middleware } from './utils';
 
 export type ResponseStyle = 'data' | 'fields';
@@ -86,32 +83,22 @@ export type RequestResult<
           ? TData[keyof TData]
           : TData
         : {
-            data: TData extends Record<string, unknown>
-              ? TData[keyof TData]
-              : TData;
+            data: TData extends Record<string, unknown> ? TData[keyof TData] : TData;
             request: Request;
             response: Response;
           }
     >
   : Promise<
       TResponseStyle extends 'data'
-        ?
-            | (TData extends Record<string, unknown>
-                ? TData[keyof TData]
-                : TData)
-            | undefined
+        ? (TData extends Record<string, unknown> ? TData[keyof TData] : TData) | undefined
         : (
             | {
-                data: TData extends Record<string, unknown>
-                  ? TData[keyof TData]
-                  : TData;
+                data: TData extends Record<string, unknown> ? TData[keyof TData] : TData;
                 error: undefined;
               }
             | {
                 data: undefined;
-                error: TError extends Record<string, unknown>
-                  ? TError[keyof TError]
-                  : TError;
+                error: TError extends Record<string, unknown> ? TError[keyof TError] : TError;
               }
           ) & {
             request: Request;
@@ -185,11 +172,7 @@ export type Options<
   TData extends TDataShape = TDataShape,
   ThrowOnError extends boolean = boolean,
   TResponseStyle extends ResponseStyle = 'fields',
-> = OmitKeys<
-  RequestOptions<TResponseStyle, ThrowOnError>,
-  'body' | 'path' | 'query' | 'url'
-> &
-  Omit<TData, 'url'>;
+> = OmitKeys<RequestOptions<TResponseStyle, ThrowOnError>, 'body' | 'path' | 'query' | 'url'> & Omit<TData, 'url'>;
 
 export type OptionsLegacyParser<
   TData = unknown,
@@ -197,19 +180,12 @@ export type OptionsLegacyParser<
   TResponseStyle extends ResponseStyle = 'fields',
 > = TData extends { body?: any }
   ? TData extends { headers?: any }
-    ? OmitKeys<
-        RequestOptions<TResponseStyle, ThrowOnError>,
-        'body' | 'headers' | 'url'
-      > &
-        TData
+    ? OmitKeys<RequestOptions<TResponseStyle, ThrowOnError>, 'body' | 'headers' | 'url'> & TData
     : OmitKeys<RequestOptions<TResponseStyle, ThrowOnError>, 'body' | 'url'> &
         TData &
         Pick<RequestOptions<TResponseStyle, ThrowOnError>, 'headers'>
   : TData extends { headers?: any }
-    ? OmitKeys<
-        RequestOptions<TResponseStyle, ThrowOnError>,
-        'headers' | 'url'
-      > &
+    ? OmitKeys<RequestOptions<TResponseStyle, ThrowOnError>, 'headers' | 'url'> &
         TData &
         Pick<RequestOptions<TResponseStyle, ThrowOnError>, 'body'>
     : OmitKeys<RequestOptions<TResponseStyle, ThrowOnError>, 'url'> & TData;
