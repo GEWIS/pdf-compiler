@@ -18,7 +18,7 @@ import (
 
 var (
 	basePath    = String("BASE_PATH", "/api/v1")
-	port        = String("PORT", ":80")
+	port        = String("PORT", ":8080")
 	host        = String("HOST", "localhost:8080")
 	templateDir = String("TEMPLATE_DIR", "templates")
 )
@@ -40,7 +40,7 @@ func main() {
 	r.Mount("/swagger", httpSwagger.WrapHandler)
 
 	log.Info().Msgf("Starting pdf-compiler server %s on port %s", basePath, port)
-	http.ListenAndServe(port, r)
+	log.Fatal().Err(http.ListenAndServe(port, r)).Msg("Server stopped")
 }
 
 type CompileRequest struct {
