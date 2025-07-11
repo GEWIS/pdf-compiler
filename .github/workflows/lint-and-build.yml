@@ -31,11 +31,6 @@ jobs:
       build: true
       test: true
       working-directory: './client'
-      prepare-command: |
-        docker build . -t test-image && \
-        docker compose -f docker-compose.test.yaml up -d && \
-        sleep 10 && \
-        docket container ls && \
-        curl http://127.0.0.1:8080/swagger/index.html
+      prepare-command: "docker build . -t test-image && docker compose -f docker-compose.test.yaml up -d"
       cleanup-command: 'docker compose -f docker-compose.test.yaml down'
 

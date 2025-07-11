@@ -1,19 +1,6 @@
 services:
-  texlive-packages:
-    image: blang/latex:ctanbasic
-    volumes:
-      - texlive-pkgs:/usr/local/texlive
-    command: ["sleep", "infinity"]
-
   pdf-compiler:
     image: test-image
     container_name: pdf-compiler
     ports:
       - "8080:80"
-    depends_on:
-      - texlive-packages
-    volumes:
-      - texlive-pkgs:/usr/share/texlive:ro
-
-volumes:
-  texlive-pkgs:
