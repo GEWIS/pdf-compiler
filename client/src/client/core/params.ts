@@ -94,7 +94,7 @@ export const buildClientParams = (args: ReadonlyArray<unknown>, fields: FieldsCo
 
     if ('in' in config) {
       if (config.key) {
-        const field = map.get(config.key);
+        const field = map.get(config.key)!;
         const name = field.map || config.key;
         (params[field.in] as Record<string, unknown>)[name] = arg;
       } else {

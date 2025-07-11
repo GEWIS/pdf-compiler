@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"github.com/go-chi/chi/v5"
 	"github.com/rs/zerolog/log"
 	httpSwagger "github.com/swaggo/http-swagger/v2"
@@ -51,7 +50,7 @@ func main() {
 // @Summary Health check
 // @Description Returns 200 OK
 // @Tags Health
-// @Success 200 {object} map[string]interface{} "OK"
+// @Success 200
 // @Router /health [get]
 func HealthCheck(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
@@ -61,6 +60,11 @@ type CompileRequest struct {
 	Tex string `json:"tex" example:"\\documentclass{article}\n\\begin{document}\nHello, world!\n\\end{document}"`
 }
 
+type ErrorResponse struct {
+    Error string `json:"error" example:"Invalid request, must provide LaTeX template"`
+}
+
+
 // Compile compiles a LaTeX template to PDF
 //
 // @Summary Compile LaTeX template
@@ -69,14 +73,16 @@ type CompileRequest struct {
 // @Accept json
 // @Produce application/pdf
 // @Param request body CompileRequest true "LaTeX template"
-// @Success 200 {string} file "PDF file"  // OpenAPI 3: use {string} not {file}
-// @Failure 400 {object} map[string]string "Invalid request"
-// @Failure 500 {object} map[string]string "Compilation error"
+// @Success 200 {string} file "PDF file"
+// @Failure 400 {object} main.ErrorResponse "Invalid request"
+// @Failure 500 {object} main.ErrorResponse "Compilation error"
 // @Router /compile [post]
 func Compile(w http.ResponseWriter, r *http.Request) {
 	var req CompileRequest
+
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.Tex == "" {
-		http.Error(w, `{"error":"Invalid request, must provide LaTeX template"}`, http.StatusBadRequest)
+		w.WriteHeader(http.StatusBadRequest)
+        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Invalid request, must provide LaTeX template"})
 		return
 	}
 	defer r.Body.Close()
@@ -84,14 +90,16 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 	// Write LaTeX to a temp file
 	dir, err := os.MkdirTemp("", "latex")
 	if err != nil {
-		http.Error(w, `{"error":"Failed to create temp directory"}`, http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
+        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to create temp directory"})
 		return
 	}
 	defer os.RemoveAll(dir) // Clean up temp files
 
 	texPath := filepath.Join(dir, "input.tex")
 	if err := os.WriteFile(texPath, []byte(req.Tex), 0644); err != nil {
-		http.Error(w, `{"error":"Failed to write template file"}`, http.StatusInternalServerError)
+	    w.WriteHeader(http.StatusInternalServerError)
+        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to write template file"})
 		return
 	}
 
@@ -107,14 +115,16 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 	if err := cmd.Run(); err != nil {
 		log.Error().Err(err).Str("log", compileLog.String()).Msg("pdflatex error")
 		errorMsg := extractLatexError(compileLog.String())
-		http.Error(w, fmt.Sprintf(`{"error":"%s"}`, errorMsg), http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
+        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: errorMsg})
 		return
 	}
 
 	pdfPath := filepath.Join(dir, "input.pdf")
 	pdfFile, err := os.Open(pdfPath)
 	if err != nil {
-		http.Error(w, `{"error":"PDF not generated"}`, http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
+        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: "PDF not generated"})
 		return
 	}
 	defer pdfFile.Close()

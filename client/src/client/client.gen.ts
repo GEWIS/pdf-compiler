@@ -15,4 +15,8 @@ export type CreateClientConfig<T extends DefaultClientOptions = ClientOptions> =
   override?: Config<DefaultClientOptions & T>,
 ) => Config<Required<DefaultClientOptions> & T>;
 
-export const client = createClient(createConfig<ClientOptions>());
+export const client = createClient(
+  createConfig<ClientOptions>({
+    baseUrl: 'http://localhost:8080/api/v1',
+  }),
+);

@@ -1,0 +1,11 @@
+capture:
+  ../docs/swagger.json:
+    server:
+      command: docker compose -f ../docker-compose.test.yaml up
+      url: http://127.0.0.1:8080/api/v1
+      ready_endpoint: /health
+      ready_timeout: 10_000
+    requests:
+      run:
+        command: yarn test
+        proxy_variable: OPTIC_PROXY

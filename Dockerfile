@@ -1,7 +1,10 @@
 FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
-COPY . .
+COPY go.mod go.sum ./
+COPY docs ./docs
+COPY main.go ./
+COPY env.go ./
 
 RUN go mod vendor
 RUN go build -o pdf-compiler .

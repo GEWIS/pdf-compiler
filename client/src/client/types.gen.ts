@@ -4,6 +4,10 @@ export type MainCompileRequest = {
   tex?: string;
 };
 
+export type MainErrorResponse = {
+  error?: string;
+};
+
 export type PostCompileData = {
   /**
    * LaTeX template
@@ -18,15 +22,11 @@ export type PostCompileErrors = {
   /**
    * Invalid request
    */
-  400: {
-    [key: string]: string;
-  };
+  400: MainErrorResponse;
   /**
    * Compilation error
    */
-  500: {
-    [key: string]: string;
-  };
+  500: MainErrorResponse;
 };
 
 export type PostCompileError = PostCompileErrors[keyof PostCompileErrors];
@@ -35,9 +35,25 @@ export type PostCompileResponses = {
   /**
    * PDF file
    */
+  200: string;
+};
+
+export type PostCompileResponse = PostCompileResponses[keyof PostCompileResponses];
+
+export type GetHealthData = {
+  body?: never;
+  path?: never;
+  query?: never;
+  url: '/health';
+};
+
+export type GetHealthResponses = {
+  /**
+   * OK
+   */
   200: unknown;
 };
 
 export type ClientOptions = {
-  baseUrl: `${string}://${string}` | (string & {});
+  baseUrl: 'http://localhost:8080/api/v1' | (string & {});
 };
