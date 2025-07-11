@@ -14,6 +14,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends \
     texlive-latex-base \
     texlive-binaries \
+    texlive-base \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 

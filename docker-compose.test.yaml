@@ -10,11 +10,6 @@ services:
     container_name: pdf-compiler
     ports:
       - "8080:80"
-    environment:
-      - BASE_PATH=/api/v1
-      - HOST=localhost:8080
-      - TEMPLATE_DIR=/templates/BAC
-      - PATH=/usr/bin:$PATH
     depends_on:
       - texlive-packages
     volumes:

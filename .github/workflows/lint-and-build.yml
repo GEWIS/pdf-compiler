@@ -8,6 +8,10 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-lint-server:
     uses: GEWIS/actions/.github/workflows/lint-and-build-go.yml@v1
@@ -27,6 +31,11 @@ jobs:
       build: true
       test: true
       working-directory: './client'
-      prepare-command: 'docker build . -t test-image && docker compose -f docker-compose.test.yaml up -d && sleep 2'
+      prepare-command: |
+        docker build . -t test-image && \
+        docker compose -f docker-compose.test.yaml up -d && \
+        sleep 10 && \
+        docket container ls && \
+        curl http://127.0.0.1:8080/swagger/index.html
       cleanup-command: 'docker compose -f docker-compose.test.yaml down'
 
