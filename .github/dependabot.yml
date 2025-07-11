@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "gomod"
-    directory: "/" # Location of go.mod
+    directory: "/"
     schedule:
       interval: "weekly"
     assignees:

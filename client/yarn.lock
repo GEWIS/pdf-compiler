@@ -256,11 +256,6 @@
     "@vue/eslint-config-prettier" "^10.2.0"
     eslint-config-prettier "^10.0.1"
 
-"@gewis/release-config@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@gewis/release-config/-/release-config-2.4.0.tgz#32b8c2fb8f93210e3cbe0b0aa7549ff72e246425"
-  integrity sha512-Dh61QyBiDeTbdDcUszNroLKcz9SUC5/cR9ERk/PWB8gSKwmUs40l72DM94xFT/ileBRs81FXuiYOF5kmn6kFPA==
-
 "@hey-api/json-schema-ref-parser@1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@hey-api/json-schema-ref-parser/-/json-schema-ref-parser-1.0.6.tgz#3c415fc265846aff8455039bb90e4283e0cc30c0"
