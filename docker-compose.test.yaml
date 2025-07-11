@@ -2,5 +2,7 @@ services:
   pdf-compiler:
     image: test-image
     container_name: pdf-compiler
+    environment:
+      - PORT=:80
     ports:
-      - "8080:8080"
+      - "8080:80"
