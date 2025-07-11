@@ -19,28 +19,42 @@ import (
 var (
 	basePath    = String("BASE_PATH", "/api/v1")
 	port        = String("PORT", ":8080")
-	host        = String("HOST", "localhost:8080")
+	swaggerURL  = String("SWAGGER_URL", "http://localhost:8080")
 	templateDir = String("TEMPLATE_DIR", "templates")
 )
 
 // @title PDF Compiler
 // @version 1.0
-// @description A simple API to compile LaTeX templates to
-// @basePath /
+// @description A simple API to compile LaTeX templates to PDF
+// @servers.url http://localhost:8080/api/v1
 func main() {
 	r := chi.NewRouter()
 
-	docs.SwaggerInfo.Host = host
-	docs.SwaggerInfo.BasePath = basePath
-
 	r.Route(basePath, func(r chi.Router) {
 		r.Post("/compile", Compile)
+		r.Get("/health", HealthCheck)
 	})
 
-	r.Mount("/swagger", httpSwagger.WrapHandler)
+	r.Get("/swagger/*", httpSwagger.WrapHandler)
+	r.Get("/swagger/doc.json", func(w http.ResponseWriter, _ *http.Request) {
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(200)
+		w.Write([]byte(docs.SwaggerInfo.ReadDoc()))
+	})
 
 	log.Info().Msgf("Starting pdf-compiler server %s on port %s", basePath, port)
 	log.Fatal().Err(http.ListenAndServe(port, r)).Msg("Server stopped")
+}
+
+// HealthCheck returns 200 OK
+//
+// @Summary Health check
+// @Description Returns 200 OK
+// @Tags Health
+// @Success 200 {object} map[string]interface{} "OK"
+// @Router /health [get]
+func HealthCheck(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
 }
 
 type CompileRequest struct {
@@ -55,7 +69,7 @@ type CompileRequest struct {
 // @Accept json
 // @Produce application/pdf
 // @Param request body CompileRequest true "LaTeX template"
-// @Success 200 {file} file "PDF file"
+// @Success 200 {string} file "PDF file"  // OpenAPI 3: use {string} not {file}
 // @Failure 400 {object} map[string]string "Invalid request"
 // @Failure 500 {object} map[string]string "Compilation error"
 // @Router /compile [post]
