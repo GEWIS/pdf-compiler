@@ -5,7 +5,7 @@ import pixelmatch from 'pixelmatch';
 import { getDocument } from 'pdfjs-dist';
 import { client, postCompile } from '../src';
 
-client.setConfig({ baseUrl: 'http://localhost:8080/api/v1' });
+client.setConfig({ baseUrl: 'http://127.0.0.1:8080/api/v1' });
 
 async function renderPdfPageToImageData(pdfBuffer: Buffer<ArrayBuffer>, pageNum = 1) {
   const pdf = await getDocument({ data: new Uint8Array(pdfBuffer) }).promise;
