@@ -1,6 +1,6 @@
 services:
   texlive-packages:
-    image: texlive/texlive:latest
+    image: blang/latex:ctanbasic
     volumes:
       - texlive-pkgs:/usr/local/texlive
     command: ["sleep", "infinity"]
