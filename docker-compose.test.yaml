@@ -3,4 +3,4 @@ services:
     image: test-image
     container_name: pdf-compiler
     ports:
-      - "8080:80"
+      - "8080:8080"

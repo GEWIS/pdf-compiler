@@ -4,7 +4,7 @@ TEMPLATES_DIR := templates
 
 .PHONY: all build swag templates_sync clean vendor update
 
-all: templates_sync update vendor swag build
+all: vendor swag build
 
 templates_sync:
 	@if [ -d "$(TEMPLATES_DIR)" ]; then \
