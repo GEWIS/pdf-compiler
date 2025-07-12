@@ -1,5 +1,15 @@
-# PDF Compiler
-`pdf-compiler` is a simple LaTeX to PDF compiler using HTTP requests written in Go.
+<div align="center">
+<img src="https://raw.githubusercontent.com/ashleymcnamara/gophers/master/NERDY.png" alt="Logo" style="width:200px;height:auto;">
+<h1>📄 PDF Compiler</h1>
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/GEWIS/pdf-compiler)](https://goreportcard.com/report/github.com/GEWIS/pdf-compiler)
+[![Build](https://img.shields.io/github/actions/workflow/status/GEWIS/pdf-compiler/semantic-release.yaml?branch=main&label=Build)](https://github.com/GEWIS/pdf-compiler/actions/workflows/semantic-release.yaml)
+[![Latest Release](https://img.shields.io/github/v/tag/GEWIS/pdf-compiler?label=Latest)](https://github.com/GEWIS/pdf-compiler/releases)
+[![client](https://img.shields.io/badge/client-npm-red?logo=npm)](https://www.npmjs.com/package/@gewis/pdf-compiler-ts)
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+</div>
+
+`pdf-compiler` is a simple LaTeX → PDF compiler over HTTP, written in Go.
 
 ## Prerequisites
 - Go 1.24+
