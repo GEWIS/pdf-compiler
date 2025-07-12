@@ -1,5 +1,12 @@
 {
   "name": "@gewis/pdf-compiler-ts",
+  "main": "./dist/index.js",
+  "version": "0.0.0",
+  "repository": {
+    "url": "https://github.com/GEWIS/pdf-compiler",
+    "type": "git",
+    "directory": "client"
+  },
   "scripts": {
     "preopenapi-ts": "swag init -d ../ -o ../docs --v3.1",
     "openapi-ts": "openapi-ts",
@@ -8,7 +15,8 @@
     "format": "prettier --ignore-path .gitignore --check ./src/",
     "format:fix": "prettier --ignore-path .gitignore --write ./src",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "prepublishOnly": "yarn install --frozen-lockfile && yarn build"
   },
   "type": "module",
   "license": "AGPL-3.0-only",
@@ -26,6 +34,9 @@
     "prettier": "^3.5.3",
     "typescript": "^5.5.3",
     "vitest": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "engines": {
     "node": ">=22.0.0"

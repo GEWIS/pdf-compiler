@@ -18,7 +18,6 @@ import (
 var (
 	basePath    = String("BASE_PATH", "/api/v1")
 	port        = String("PORT", ":8080")
-	swaggerURL  = String("SWAGGER_URL", "http://localhost:8080")
 	templateDir = String("TEMPLATE_DIR", "templates")
 )
 
@@ -63,7 +62,6 @@ type CompileRequest struct {
 type ErrorResponse struct {
     Error string `json:"error" example:"Invalid request, must provide LaTeX template"`
 }
-
 
 // Compile compiles a LaTeX template to PDF
 //

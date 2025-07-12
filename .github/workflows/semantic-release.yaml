@@ -1,0 +1,36 @@
+name: Semantic release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  versioning:
+    uses: GEWIS/actions/.github/workflows/versioning.yml@v1
+
+  release-server:
+    uses: GEWIS/actions/.github/workflows/docker-release.yml@v1
+    needs: versioning
+    if: ${{ needs.versioning.outputs.next-version != '' }}
+    with:
+      projects: "['.']"
+      version: ${{ needs.versioning.outputs.next-version }}
+      docker-registry: "abc.docker-registry.gewis.nl"
+      docker-paths: "['eou/pdf-compiler']"
+    secrets:
+      REGISTRY_USERNAME: ${{ secrets.SVC_GH_ABCEOU_USERNAME }}
+      REGISTRY_PASSWORD: ${{ secrets.SVC_GH_ABCEOU_PWD }}
+
+  release-client:
+      uses: GEWIS/actions/.github/workflows/npm-release.yml@c4e8d853d5ebff5aefa7df91dcf9010e71f0949d
+      needs: versioning
+      if: ${{ needs.versioning.outputs.next-version != '' }}
+      with:
+        node-version: '22.x'
+        version: ${{ needs.versioning.outputs.next-version }}
+        working-directory: './client'
+      secrets:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+

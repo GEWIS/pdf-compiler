@@ -1,0 +1,12 @@
+src/
+test/
+*.ts
+*.test.*
+optic.yml
+.prettierrc.mjs
+tsconfig.json
+tsconfig.eslint.json
+release.config.js
+eslint.config.mjs
+node_modules/
+.git/
