@@ -3,8 +3,9 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	docs "github.com/gewis/pdf-compiler/docs"
+	docs "github.com/GEWIS/pdf-compiler/docs"
 	"github.com/go-chi/chi/v5"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	httpSwagger "github.com/swaggo/http-swagger/v2"
 	"io"
@@ -19,6 +20,7 @@ var (
 	basePath    = String("BASE_PATH", "/api/v1")
 	port        = String("PORT", ":8080")
 	templateDir = String("TEMPLATE_DIR", "templates")
+	logLevel    = String("LOG_LEVEL", "info")
 )
 
 // @title PDF Compiler
@@ -27,6 +29,12 @@ var (
 // @servers.url http://localhost:8080/api/v1
 func main() {
 	r := chi.NewRouter()
+
+	l, err := zerolog.ParseLevel(logLevel)
+	if err != nil {
+		log.Fatal().Err(err).Msg("could not parse level")
+	}
+	zerolog.SetGlobalLevel(l)
 
 	r.Route(basePath, func(r chi.Router) {
 		r.Post("/compile", Compile)
