@@ -23,7 +23,7 @@ jobs:
       REGISTRY_PASSWORD: ${{ secrets.SVC_GH_ABCEOU_PWD }}
 
   release-client:
-      uses: GEWIS/actions/.github/workflows/npm-release.yml@c4e8d853d5ebff5aefa7df91dcf9010e71f0949d
+      uses: GEWIS/actions/.github/workflows/npm-release.yml@v1
       needs: versioning
       if: ${{ needs.versioning.outputs.next-version != '' }}
       with:
