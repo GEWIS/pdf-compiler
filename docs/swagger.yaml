@@ -10,6 +10,12 @@ components:
             \end{document}
           type: string
       type: object
+    main.ErrorResponse:
+      properties:
+        error:
+          example: Invalid request, must provide LaTeX template
+          type: string
+      type: object
 externalDocs:
   description: ""
   url: ""
@@ -44,13 +50,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-          description: error
+                $ref: '#/components/schemas/main.ErrorResponse'
+          description: Invalid request
         "500":
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/main.ErrorResponse'
           description: Compilation error
       summary: Compile LaTeX template
       tags:
