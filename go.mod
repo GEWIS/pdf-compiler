@@ -1,4 +1,4 @@
-module pdf-compiler
+module github.com/gewis/pdf-compiler
 
 go 1.24.2
 

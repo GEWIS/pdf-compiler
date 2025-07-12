@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	docs "github.com/gewis/pdf-compiler/docs"
 	"github.com/go-chi/chi/v5"
 	"github.com/rs/zerolog/log"
 	httpSwagger "github.com/swaggo/http-swagger/v2"
@@ -11,7 +12,6 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-	docs "pdf-compiler/docs"
 	"strings"
 )
 
