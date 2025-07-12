@@ -60,7 +60,7 @@ type CompileRequest struct {
 }
 
 type ErrorResponse struct {
-    Error string `json:"error" example:"Invalid request, must provide LaTeX template"`
+	Error string `json:"error" example:"Invalid request, must provide LaTeX template"`
 }
 
 // Compile compiles a LaTeX template to PDF
@@ -80,7 +80,7 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.Tex == "" {
 		w.WriteHeader(http.StatusBadRequest)
-        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Invalid request, must provide LaTeX template"})
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Invalid request, must provide LaTeX template"})
 		return
 	}
 	defer r.Body.Close()
@@ -89,15 +89,15 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 	dir, err := os.MkdirTemp("", "latex")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to create temp directory"})
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to create temp directory"})
 		return
 	}
 	defer os.RemoveAll(dir) // Clean up temp files
 
 	texPath := filepath.Join(dir, "input.tex")
 	if err := os.WriteFile(texPath, []byte(req.Tex), 0644); err != nil {
-	    w.WriteHeader(http.StatusInternalServerError)
-        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to write template file"})
+		w.WriteHeader(http.StatusInternalServerError)
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to write template file"})
 		return
 	}
 
@@ -114,7 +114,7 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 		log.Error().Err(err).Str("log", compileLog.String()).Msg("pdflatex error")
 		errorMsg := extractLatexError(compileLog.String())
 		w.WriteHeader(http.StatusInternalServerError)
-        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: errorMsg})
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: errorMsg})
 		return
 	}
 
@@ -122,7 +122,7 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 	pdfFile, err := os.Open(pdfPath)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-        _ = json.NewEncoder(w).Encode(ErrorResponse{Error: "PDF not generated"})
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "PDF not generated"})
 		return
 	}
 	defer pdfFile.Close()
