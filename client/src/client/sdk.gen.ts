@@ -5,6 +5,9 @@ import type {
   PostCompileData,
   PostCompileResponses,
   PostCompileErrors,
+  PostCompileHtmlData,
+  PostCompileHtmlResponses,
+  PostCompileHtmlErrors,
   GetHealthData,
   GetHealthResponses,
 } from './types.gen';
@@ -34,6 +37,23 @@ export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends 
 export const postCompile = <ThrowOnError extends boolean = false>(options: Options<PostCompileData, ThrowOnError>) => {
   return (options.client ?? _heyApiClient).post<PostCompileResponses, PostCompileErrors, ThrowOnError>({
     url: '/compile',
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  });
+};
+
+/**
+ * Compile HTML to PDF
+ * Compiles an HTML document and returns a PDF using headless Chrome
+ */
+export const postCompileHtml = <ThrowOnError extends boolean = false>(
+  options: Options<PostCompileHtmlData, ThrowOnError>,
+) => {
+  return (options.client ?? _heyApiClient).post<PostCompileHtmlResponses, PostCompileHtmlErrors, ThrowOnError>({
+    url: '/compile-html',
     ...options,
     headers: {
       'Content-Type': 'application/json',

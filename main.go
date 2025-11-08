@@ -21,11 +21,12 @@ var (
 	port        = String("PORT", ":8080")
 	templateDir = String("TEMPLATE_DIR", "templates")
 	logLevel    = String("LOG_LEVEL", "info")
+	chromeBin   = String("PATH_TO_CHROME_BIN", "chromium-browser")
 )
 
 // @title PDF Compiler
 // @version 1.0
-// @description A simple API to compile LaTeX templates to PDF
+// @description A simple API to compile LaTeX templates and HTML documents to PDF
 // @servers.url http://localhost:8080/api/v1
 func main() {
 	r := chi.NewRouter()
@@ -38,6 +39,7 @@ func main() {
 
 	r.Route(basePath, func(r chi.Router) {
 		r.Post("/compile", Compile)
+		r.Post("/compile-html", CompileHTML)
 		r.Get("/health", HealthCheck)
 	})
 
@@ -137,7 +139,9 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/pdf")
 	w.Header().Set("Content-Disposition", "attachment; filename=output.pdf")
-	io.Copy(w, pdfFile)
+	if _, err := io.Copy(w, pdfFile); err != nil {
+		log.Error().Err(err).Msg("failed to write PDF to response")
+	}
 }
 
 func extractLatexError(log string) string {
@@ -148,4 +152,83 @@ func extractLatexError(log string) string {
 	}
 	// fallback...
 	return "Unknown LaTeX error"
+}
+
+type CompileHTMLRequest struct {
+	HTML string `json:"html" example:"<html><body><h1>Hello, world!</h1></body></html>"`
+}
+
+// CompileHTML compiles an HTML document to PDF using headless Chrome
+//
+// @Summary Compile HTML to PDF
+// @Description Compiles an HTML document and returns a PDF using headless Chrome
+// @Tags Compile
+// @Accept json
+// @Produce application/pdf
+// @Param request body CompileHTMLRequest true "HTML document"
+// @Success 200 {string} file "PDF file"
+// @Failure 400 {object} main.ErrorResponse "Invalid request"
+// @Failure 500 {object} main.ErrorResponse "Compilation error"
+// @Router /compile-html [post]
+func CompileHTML(w http.ResponseWriter, r *http.Request) {
+	var req CompileHTMLRequest
+
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil || req.HTML == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Invalid request, must provide HTML document"})
+		return
+	}
+	defer r.Body.Close()
+
+	// Write HTML to a temp file
+	dir, err := os.MkdirTemp("", "html")
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to create temp directory"})
+		return
+	}
+	defer os.RemoveAll(dir)
+
+	htmlPath := filepath.Join(dir, "input.html")
+	if err := os.WriteFile(htmlPath, []byte(req.HTML), 0600); err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to write HTML file"})
+		return
+	}
+
+	pdfPath := filepath.Join(dir, "output.pdf")
+
+	// Convert HTML to PDF using headless Chrome
+	cmd := exec.Command(chromeBin,
+		"--headless",
+		"--disable-gpu",
+		"--no-sandbox",
+		"--disable-dev-shm-usage",
+		"--print-to-pdf="+pdfPath,
+		"file://"+htmlPath,
+	)
+
+	var compileLog bytes.Buffer
+	cmd.Stdout = &compileLog
+	cmd.Stderr = &compileLog
+	if err := cmd.Run(); err != nil {
+		log.Error().Err(err).Str("log", compileLog.String()).Msg("chrome error")
+		w.WriteHeader(http.StatusInternalServerError)
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to generate PDF: " + compileLog.String()})
+		return
+	}
+
+	pdfFile, err := os.Open(pdfPath)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "PDF not generated"})
+		return
+	}
+	defer pdfFile.Close()
+
+	w.Header().Set("Content-Type", "application/pdf")
+	w.Header().Set("Content-Disposition", "attachment; filename=output.pdf")
+	if _, err := io.Copy(w, pdfFile); err != nil {
+		log.Error().Err(err).Msg("failed to write PDF to response")
+	}
 }
