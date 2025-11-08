@@ -9,7 +9,7 @@
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 </div>
 
-`pdf-compiler` is a simple LaTeX → PDF compiler over HTTP, written in Go.
+`pdf-compiler` is a simple LaTeX and HTML → PDF compiler over HTTP, written in Go. It supports compiling LaTeX documents using pdflatex and HTML documents using headless Chrome.
 
 ## Prerequisites
 - Go 1.24+
