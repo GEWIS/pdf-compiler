@@ -32,7 +32,6 @@ describe('/compile endpoint', () => {
 \\begin{document}
 Hello, world!
 \\end{document}`;
-    console.error(client.getConfig().baseUrl)
     const data = await postCompile<true>({ client, body: { tex }, parseAs: 'stream' });
     const pdfBuffer = Buffer.from(await data.response.arrayBuffer());
     const referencePdf = await readFile('./test/assets/compile_test.pdf');
@@ -71,6 +70,14 @@ describe('/compile-html endpoint', () => {
 
     const actual = await renderPdfPageToImageData(pdfBuffer, 1);
     const expected = await renderPdfPageToImageData(referencePdf, 1);
+
+    if (actual.width !== expected.width || actual.height !== expected.height) {
+      throw new Error(
+        `PDF dimensions do not match. Actual: ${actual.width}x${actual.height}, Expected: ${expected.width}x${expected.height}. ` +
+        `The generated PDF may have different page size settings than the reference PDF. ` +
+        `You may need to regenerate the reference PDF or adjust Chrome's PDF generation settings.`
+      );
+    }
 
     const diff = new Uint8ClampedArray(actual.width * actual.height * 4);
 
