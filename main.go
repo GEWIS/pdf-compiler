@@ -21,7 +21,7 @@ var (
 	port        = String("PORT", ":8080")
 	templateDir = String("TEMPLATE_DIR", "templates")
 	logLevel    = String("LOG_LEVEL", "info")
-	chromeBin   = String("PATH_TO_CHROME_BIN", "chromium-browser")
+	chromeBin   = String("PATH_TO_CHROME_BIN", "google-chrome-stable")
 )
 
 // @title PDF Compiler
@@ -198,15 +198,17 @@ func CompileHTML(w http.ResponseWriter, r *http.Request) {
 
 	pdfPath := filepath.Join(dir, "output.pdf")
 
-	// Convert HTML to PDF using headless Chrome
-	cmd := exec.Command(chromeBin,
-		"--headless",
-		"--disable-gpu",
-		"--no-sandbox",
-		"--disable-dev-shm-usage",
-		"--print-to-pdf="+pdfPath,
-		"file://"+htmlPath,
-	)
+    cmd := exec.Command(chromeBin,
+        "--headless",
+        "--disable-gpu",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--run-all-compositor-stages-before-draw",
+        "--no-pdf-header-footer",
+        "--print-to-pdf-no-header",
+        "--print-to-pdf="+pdfPath,
+        "file://"+htmlPath,
+    )
 
 	var compileLog bytes.Buffer
 	cmd.Stdout = &compileLog
