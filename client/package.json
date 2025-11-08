@@ -8,7 +8,7 @@
     "directory": "client"
   },
   "scripts": {
-    "preopenapi-ts": "swag init -d ../ -o ../docs --v3.1",
+    "preopenapi-ts": "swag init -d ../ -o ../docs",
     "openapi-ts": "openapi-ts",
     "build": "tsc",
     "test": "vitest run",

@@ -18,6 +18,7 @@ RUN apt-get update \
     texlive-latex-base \
     texlive-binaries \
     texlive-base \
+    chromium-browser \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
