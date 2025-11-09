@@ -1,6 +1,7 @@
 {
   "name": "@gewis/pdf-compiler-ts",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "version": "0.0.0",
   "repository": {
     "url": "https://github.com/GEWIS/pdf-compiler",
