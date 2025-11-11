@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b3e9de7f-3a0b-42db-84db-ea8cb79aa839" name="Changes" comment="fix: export types in package&#10;&#10;This should be a build commit but we want to actually make a release.">
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/env.go" beforeDir="false" afterPath="$PROJECT_DIR$/env.go" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Feature/html-to-pdf" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "JustSamuel"
+  }
+}]]></component>
+  <component name="GitRewordedCommitMessages">
+    <option name="onto" value="9833aec040eb44c13a91d5c46ddaa7b4d94ac7c5" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:GEWIS/pdf-compiler.git",
+    "accountId": "37f5f8d1-f84d-4efd-a5d9-86e42ec7e438"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="35CCGe7A5XnFDxqySurTkYtAajl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Samuel\\WebstormProjects\\GEWIS\\pdf-compiler\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="Feature/html-to-pdf" />
+    </force-push-targets>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Samuel\WebstormProjects\GEWIS\pdf-compiler\client\test\assets" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b3e9de7f-3a0b-42db-84db-ea8cb79aa839" name="Changes" comment="" />
+      <created>1762604572414</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762604572414</updated>
+      <workItem from="1762604575478" duration="11704000" />
+    </task>
+    <task id="LOCAL-00001" summary="feat: allow html to pdf compiling using chromium">
+      <option name="closed" value="true" />
+      <created>1762606597575</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762606597575</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test: html to pdf test suite with compare">
+      <option name="closed" value="true" />
+      <created>1762607051256</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762607051256</updated>
+    </task>
+    <task id="LOCAL-00003" summary="test: html to pdf test suite with compare">
+      <option name="closed" value="true" />
+      <created>1762608055014</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762608055014</updated>
+    </task>
+    <task id="LOCAL-00004" summary="docs: update README.md">
+      <option name="closed" value="true" />
+      <created>1762608068897</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762608068897</updated>
+    </task>
+    <task id="LOCAL-00005" summary="test: html to pdf test suite with compare">
+      <option name="closed" value="true" />
+      <created>1762608759130</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1762608759130</updated>
+    </task>
+    <task id="LOCAL-00006" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762608927025</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762608927025</updated>
+    </task>
+    <task id="LOCAL-00007" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762609095764</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762609095764</updated>
+    </task>
+    <task id="LOCAL-00008" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762609319921</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762609319921</updated>
+    </task>
+    <task id="LOCAL-00009" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762609497981</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1762609497981</updated>
+    </task>
+    <task id="LOCAL-00010" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762609663214</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1762609663214</updated>
+    </task>
+    <task id="LOCAL-00011" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762609936246</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1762609936246</updated>
+    </task>
+    <task id="LOCAL-00012" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762610138740</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1762610138740</updated>
+    </task>
+    <task id="LOCAL-00013" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762610801708</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1762610801708</updated>
+    </task>
+    <task id="LOCAL-00014" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762611218564</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1762611218564</updated>
+    </task>
+    <task id="LOCAL-00015" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762649758420</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1762649758420</updated>
+    </task>
+    <task id="LOCAL-00016" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762650154563</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1762650154563</updated>
+    </task>
+    <task id="LOCAL-00017" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762650249325</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1762650249325</updated>
+    </task>
+    <task id="LOCAL-00018" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762650801864</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1762650801864</updated>
+    </task>
+    <task id="LOCAL-00019" summary="test: tmp to fix test">
+      <option name="closed" value="true" />
+      <created>1762652851287</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1762652851287</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fix: headless chrome issues">
+      <option name="closed" value="true" />
+      <created>1762653309942</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1762653309942</updated>
+    </task>
+    <task id="LOCAL-00021" summary="chore: go fmt">
+      <option name="closed" value="true" />
+      <created>1762688807926</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1762688807926</updated>
+    </task>
+    <task id="LOCAL-00022" summary="build: export types in package">
+      <option name="closed" value="true" />
+      <created>1762688844702</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1762688844702</updated>
+    </task>
+    <task id="LOCAL-00023" summary="fix: export types in package&#10;&#10;This should be a build commit but we want to actually make a release.">
+      <option name="closed" value="true" />
+      <created>1762688974986</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1762688974986</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="GitHub.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: allow html to pdf compiling using chromium" />
+    <MESSAGE value="docs: update README.md" />
+    <MESSAGE value="squash! test: html to pdf test suite with compare" />
+    <MESSAGE value="test: html to pdf test suite with compare" />
+    <MESSAGE value="test: tmp to fix test" />
+    <MESSAGE value="fix: headless chrome issues" />
+    <MESSAGE value="chore: go fmt" />
+    <MESSAGE value="build: export types in package" />
+    <MESSAGE value="fix: export types in package&#10;&#10;This should be a build commit but we want to actually make a release." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: export types in package&#10;&#10;This should be a build commit but we want to actually make a release." />
+  </component>
+</project>

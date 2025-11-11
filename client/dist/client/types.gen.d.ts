@@ -1,0 +1,79 @@
+export type MainCompileHtmlRequest = {
+    html?: string;
+};
+export type MainCompileRequest = {
+    tex?: string;
+};
+export type MainErrorResponse = {
+    error?: string;
+};
+export type PostCompileData = {
+    /**
+     * LaTeX template
+     */
+    body: MainCompileRequest;
+    path?: never;
+    query?: never;
+    url: '/compile';
+};
+export type PostCompileErrors = {
+    /**
+     * Invalid request
+     */
+    400: MainErrorResponse;
+    /**
+     * Compilation error
+     */
+    500: MainErrorResponse;
+};
+export type PostCompileError = PostCompileErrors[keyof PostCompileErrors];
+export type PostCompileResponses = {
+    /**
+     * PDF file
+     */
+    200: Blob | File;
+};
+export type PostCompileResponse = PostCompileResponses[keyof PostCompileResponses];
+export type PostCompileHtmlData = {
+    /**
+     * HTML document
+     */
+    body: MainCompileHtmlRequest;
+    path?: never;
+    query?: never;
+    url: '/compile-html';
+};
+export type PostCompileHtmlErrors = {
+    /**
+     * Invalid request
+     */
+    400: MainErrorResponse;
+    /**
+     * Compilation error
+     */
+    500: MainErrorResponse;
+};
+export type PostCompileHtmlError = PostCompileHtmlErrors[keyof PostCompileHtmlErrors];
+export type PostCompileHtmlResponses = {
+    /**
+     * PDF file
+     */
+    200: Blob | File;
+};
+export type PostCompileHtmlResponse = PostCompileHtmlResponses[keyof PostCompileHtmlResponses];
+export type GetHealthData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/health';
+};
+export type GetHealthResponses = {
+    /**
+     * OK
+     */
+    200: unknown;
+};
+export type ClientOptions = {
+    baseUrl: string;
+};
+//# sourceMappingURL=types.gen.d.ts.map
