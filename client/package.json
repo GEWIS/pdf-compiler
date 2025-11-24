@@ -24,7 +24,7 @@
   "devDependencies": {
     "@gewis/eslint-config-typescript": "^2.4.0",
     "@gewis/prettier-config": "^2.2.2",
-    "@hey-api/openapi-ts": "^0.87.4",
+    "@hey-api/openapi-ts": "^0.88.0",
     "@types/node": "^24.10.1",
     "@useoptic/optic": "^1.0.9",
     "canvas": "^3.2.0",
@@ -33,7 +33,7 @@
     "pixelmatch": "^7.1.0",
     "prettier": "^3.5.3",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.9"
+    "vitest": "^4.0.13"
   },
   "publishConfig": {
     "access": "public"
