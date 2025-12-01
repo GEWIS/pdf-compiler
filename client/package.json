@@ -29,11 +29,11 @@
     "@useoptic/optic": "^1.0.9",
     "canvas": "^3.2.0",
     "eslint": "^9.39.1",
-    "pdfjs-dist": "^5.4.394",
+    "pdfjs-dist": "^5.4.449",
     "pixelmatch": "^7.1.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.7.3",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.13"
+    "vitest": "^4.0.14"
   },
   "publishConfig": {
     "access": "public"
