@@ -315,23 +315,23 @@
   resolved "https://registry.yarnpkg.com/@hey-api/codegen-core/-/codegen-core-0.3.3.tgz#a93d2a6b338a5525fe53be42c29e2dd839122e43"
   integrity sha512-vArVDtrvdzFewu1hnjUm4jX1NBITlSCeO81EdWq676MxQbyxsGcDPAgohaSA+Wvr4HjPSvsg2/1s2zYxUtXebg==
 
-"@hey-api/json-schema-ref-parser@1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@hey-api/json-schema-ref-parser/-/json-schema-ref-parser-1.2.1.tgz#7268186964bfb24beb227e2d79e514fd0dd3c775"
-  integrity sha512-inPeksRLq+j3ArnuGOzQPQE//YrhezQG0+9Y9yizScBN2qatJ78fIByhEgKdNAbtguDCn4RPxmEhcrePwHxs4A==
+"@hey-api/json-schema-ref-parser@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@hey-api/json-schema-ref-parser/-/json-schema-ref-parser-1.2.2.tgz#9609373215dd868d42d89561c9b906c64f5d9239"
+  integrity sha512-oS+5yAdwnK20lSeFO1d53Ku+yaGCsY8PcrmSq2GtSs3bsBfRnHAbpPKSVzQcaxAOrzj5NB+f34WhZglVrNayBA==
   dependencies:
     "@jsdevtools/ono" "^7.1.3"
     "@types/json-schema" "^7.0.15"
-    js-yaml "^4.1.0"
+    js-yaml "^4.1.1"
     lodash "^4.17.21"
 
-"@hey-api/openapi-ts@^0.88.0":
-  version "0.88.0"
-  resolved "https://registry.yarnpkg.com/@hey-api/openapi-ts/-/openapi-ts-0.88.0.tgz#357ac0eae7c47738c75d67440ae89d2aff04db71"
-  integrity sha512-ZrvmDfmVf+N4ry786LAhS/DoH+xkIjIJIeDnj2aL1qnMTIDsdRIXXvr80EnAZVBgunzu1wTBbHb3H9OfyDQ2EQ==
+"@hey-api/openapi-ts@^0.88.1":
+  version "0.88.1"
+  resolved "https://registry.yarnpkg.com/@hey-api/openapi-ts/-/openapi-ts-0.88.1.tgz#516c9c9f4461f3e5f05dfb9ccb71c56cbdd9fc5a"
+  integrity sha512-x/nDTupOnV9VuSeNIiJpgIpc915GHduhyseJeMTnI0JMsXaObmpa0rgPr3ASVEYMLgpvqozIEG1RTOOnal6zLQ==
   dependencies:
     "@hey-api/codegen-core" "^0.3.3"
-    "@hey-api/json-schema-ref-parser" "1.2.1"
+    "@hey-api/json-schema-ref-parser" "1.2.2"
     ansi-colors "4.1.3"
     c12 "3.3.2"
     color-support "1.1.3"
@@ -1517,62 +1517,62 @@
     ora "5.4.1"
     whatwg-mimetype "^3.0.0"
 
-"@vitest/expect@4.0.13":
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/@vitest/expect/-/expect-4.0.13.tgz#2ee6e8b3016c08bce6544ea18dffddc0015fcc7e"
-  integrity sha512-zYtcnNIBm6yS7Gpr7nFTmq8ncowlMdOJkWLqYvhr/zweY6tFbDkDi8BPPOeHxEtK1rSI69H7Fd4+1sqvEGli6w==
+"@vitest/expect@4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@vitest/expect/-/expect-4.0.15.tgz#8e7e1daf54b7bc9ef6db4d989563c1d55ce424f5"
+  integrity sha512-Gfyva9/GxPAWXIWjyGDli9O+waHDC0Q0jaLdFP1qPAUUfo1FEXPXUfUkp3eZA0sSq340vPycSyOlYUeM15Ft1w==
   dependencies:
     "@standard-schema/spec" "^1.0.0"
     "@types/chai" "^5.2.2"
-    "@vitest/spy" "4.0.13"
-    "@vitest/utils" "4.0.13"
+    "@vitest/spy" "4.0.15"
+    "@vitest/utils" "4.0.15"
     chai "^6.2.1"
     tinyrainbow "^3.0.3"
 
-"@vitest/mocker@4.0.13":
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/@vitest/mocker/-/mocker-4.0.13.tgz#922a33b95136862e2b6c3cdc39aa2e3b8d4c0550"
-  integrity sha512-eNCwzrI5djoauklwP1fuslHBjrbR8rqIVbvNlAnkq1OTa6XT+lX68mrtPirNM9TnR69XUPt4puBCx2Wexseylg==
+"@vitest/mocker@4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@vitest/mocker/-/mocker-4.0.15.tgz#5aca5f9c4691efdd2397763efcbde9c680f79caf"
+  integrity sha512-CZ28GLfOEIFkvCFngN8Sfx5h+Se0zN+h4B7yOsPVCcgtiO7t5jt9xQh2E1UkFep+eb9fjyMfuC5gBypwb07fvQ==
   dependencies:
-    "@vitest/spy" "4.0.13"
+    "@vitest/spy" "4.0.15"
     estree-walker "^3.0.3"
     magic-string "^0.30.21"
 
-"@vitest/pretty-format@4.0.13":
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/@vitest/pretty-format/-/pretty-format-4.0.13.tgz#8e330f188fd481701208f4bbf3bd741b6cd25703"
-  integrity sha512-ooqfze8URWbI2ozOeLDMh8YZxWDpGXoeY3VOgcDnsUxN0jPyPWSUvjPQWqDGCBks+opWlN1E4oP1UYl3C/2EQA==
+"@vitest/pretty-format@4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@vitest/pretty-format/-/pretty-format-4.0.15.tgz#2cd8e1bcb4fc8e24124d889a23d1140aecca5744"
+  integrity sha512-SWdqR8vEv83WtZcrfLNqlqeQXlQLh2iilO1Wk1gv4eiHKjEzvgHb2OVc3mIPyhZE6F+CtfYjNlDJwP5MN6Km7A==
   dependencies:
     tinyrainbow "^3.0.3"
 
-"@vitest/runner@4.0.13":
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/@vitest/runner/-/runner-4.0.13.tgz#cb458e619ba7acb0411a40d66b910875a34f5397"
-  integrity sha512-9IKlAru58wcVaWy7hz6qWPb2QzJTKt+IOVKjAx5vb5rzEFPTL6H4/R9BMvjZ2ppkxKgTrFONEJFtzvnyEpiT+A==
+"@vitest/runner@4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@vitest/runner/-/runner-4.0.15.tgz#fdd4e5d05a4c6b73be9746845d29c7329c37ae3b"
+  integrity sha512-+A+yMY8dGixUhHmNdPUxOh0la6uVzun86vAbuMT3hIDxMrAOmn5ILBHm8ajrqHE0t8R9T1dGnde1A5DTnmi3qw==
   dependencies:
-    "@vitest/utils" "4.0.13"
+    "@vitest/utils" "4.0.15"
     pathe "^2.0.3"
 
-"@vitest/snapshot@4.0.13":
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/@vitest/snapshot/-/snapshot-4.0.13.tgz#43ed94d7401a42891f2ad7c7f2e019e2f4333ff7"
-  integrity sha512-hb7Usvyika1huG6G6l191qu1urNPsq1iFc2hmdzQY3F5/rTgqQnwwplyf8zoYHkpt7H6rw5UfIw6i/3qf9oSxQ==
+"@vitest/snapshot@4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@vitest/snapshot/-/snapshot-4.0.15.tgz#52f686d7f314bae53657c1404f8ce7b0b99d2cec"
+  integrity sha512-A7Ob8EdFZJIBjLjeO0DZF4lqR6U7Ydi5/5LIZ0xcI+23lYlsYJAfGn8PrIWTYdZQRNnSRlzhg0zyGu37mVdy5g==
   dependencies:
-    "@vitest/pretty-format" "4.0.13"
+    "@vitest/pretty-format" "4.0.15"
     magic-string "^0.30.21"
     pathe "^2.0.3"
 
-"@vitest/spy@4.0.13":
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/@vitest/spy/-/spy-4.0.13.tgz#a57d9a611a51ce1dc17c3315f4546d37f62c6311"
-  integrity sha512-hSu+m4se0lDV5yVIcNWqjuncrmBgwaXa2utFLIrBkQCQkt+pSwyZTPFQAZiiF/63j8jYa8uAeUZ3RSfcdWaYWw==
+"@vitest/spy@4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@vitest/spy/-/spy-4.0.15.tgz#57987c857c3f1bcea5513b379e8dfc8f06b37b8f"
+  integrity sha512-+EIjOJmnY6mIfdXtE/bnozKEvTC4Uczg19yeZ2vtCz5Yyb0QQ31QWVQ8hswJ3Ysx/K2EqaNsVanjr//2+P3FHw==
 
-"@vitest/utils@4.0.13":
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/@vitest/utils/-/utils-4.0.13.tgz#ecf25b02fe406a0a6f2e3ac3d5f5b580c0579bb5"
-  integrity sha512-ydozWyQ4LZuu8rLp47xFUWis5VOKMdHjXCWhs1LuJsTNKww+pTHQNK4e0assIB9K80TxFyskENL6vCu3j34EYA==
+"@vitest/utils@4.0.15":
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/@vitest/utils/-/utils-4.0.15.tgz#2e36d5c34656a1ce1a057d8595a835bff524f1bc"
+  integrity sha512-HXjPW2w5dxhTD0dLwtYHDnelK3j8sR8cWIaLxr22evTyY6q8pRCjZSmhRWVjBaOVXChQd6AwMzi9pucorXCPZA==
   dependencies:
-    "@vitest/pretty-format" "4.0.13"
+    "@vitest/pretty-format" "4.0.15"
     tinyrainbow "^3.0.3"
 
 "@vue/eslint-config-prettier@^10.2.0":
@@ -2372,7 +2372,7 @@ debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3, debug@^4.3.4, debug@^4.3.6, debug@^4.4.0, debug@^4.4.3:
+debug@4, debug@^4.3.1, debug@^4.3.2, debug@^4.3.3, debug@^4.3.4, debug@^4.3.6, debug@^4.4.0:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.3.tgz#c6ae432d9bd9662582fce08709b038c58e9e3d6a"
   integrity sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==
@@ -4118,6 +4118,13 @@ js-yaml@^4.1.0:
   dependencies:
     argparse "^2.0.1"
 
+js-yaml@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.1.tgz#854c292467705b699476e1a2decc0c8a3458806b"
+  integrity sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==
+  dependencies:
+    argparse "^2.0.1"
+
 jsbn@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-1.1.0.tgz#b01307cb29b618a1ed26ec79e911f803c4da0040"
@@ -4803,6 +4810,11 @@ object.values@^1.2.1:
     define-properties "^1.2.1"
     es-object-atoms "^1.0.0"
 
+obug@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/obug/-/obug-2.1.1.tgz#2cba74ff241beb77d63055ddf4cd1e9f90b538be"
+  integrity sha512-uTqF9MuPraAQ+IsnPf366RG4cP9RtUi7MLO1N3KEc+wb0a6yKpeL0lmk2IB1jY5KHPAlTc6T/JRdC/YqxHNwkQ==
+
 ohash@^2.0.11:
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/ohash/-/ohash-2.0.11.tgz#60b11e8cff62ca9dee88d13747a5baa145f5900b"
@@ -5052,10 +5064,10 @@ pathe@^2.0.3:
   resolved "https://registry.yarnpkg.com/pathe/-/pathe-2.0.3.tgz#3ecbec55421685b70a9da872b2cff3e1cbed1716"
   integrity sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==
 
-pdfjs-dist@^5.4.394:
-  version "5.4.394"
-  resolved "https://registry.yarnpkg.com/pdfjs-dist/-/pdfjs-dist-5.4.394.tgz#48697151afce097132673883a55bede103ded6e4"
-  integrity sha512-9ariAYGqUJzx+V/1W4jHyiyCep6IZALmDzoaTLZ6VNu8q9LWi1/ukhzHgE2Xsx96AZi0mbZuK4/ttIbqSbLypg==
+pdfjs-dist@^5.4.449:
+  version "5.4.449"
+  resolved "https://registry.yarnpkg.com/pdfjs-dist/-/pdfjs-dist-5.4.449.tgz#acc2b4fafd595981280d0314e151445eb9f9c00b"
+  integrity sha512-CegnUaT0QwAyQMS+7o2POr4wWUNNe8VaKKlcuoRHeYo98cVnqPpwOXNSx6Trl6szH02JrRcsPgletV6GmF3LtQ==
   optionalDependencies:
     "@napi-rs/canvas" "^0.1.81"
 
@@ -5222,10 +5234,10 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^3.5.3:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.6.2.tgz#ccda02a1003ebbb2bfda6f83a074978f608b9393"
-  integrity sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==
+prettier@^3.7.4:
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.7.4.tgz#d2f8335d4b1cec47e1c8098645411b0c9dff9c0f"
+  integrity sha512-v6UNi1+3hSlVvv8fSaoUbggEM5VErKmmpGA7Pl3HF8V6uKY7rvClBOJlH6yNwQtfTueNkGVpOv/mtWL9L4bgRA==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
@@ -6007,12 +6019,7 @@ tinybench@^2.9.0:
   resolved "https://registry.yarnpkg.com/tinybench/-/tinybench-2.9.0.tgz#103c9f8ba6d7237a47ab6dd1dcff77251863426b"
   integrity sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==
 
-tinyexec@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/tinyexec/-/tinyexec-0.3.2.tgz#941794e657a85e496577995c6eef66f53f42b3d2"
-  integrity sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==
-
-tinyexec@^1.0.1:
+tinyexec@^1.0.1, tinyexec@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/tinyexec/-/tinyexec-1.0.2.tgz#bdd2737fe2ba40bd6f918ae26642f264b99ca251"
   integrity sha512-W/KYk+NFhkmsYpuHq5JykngiOCnxeVL8v8dFnqxSD8qEEdRfXk1SDM6JzNqcERbcGYj9tMrDQBYV9cjgnunFIg==
@@ -6371,27 +6378,27 @@ vary@^1, vary@~1.1.2:
   optionalDependencies:
     fsevents "~2.3.3"
 
-vitest@^4.0.13:
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/vitest/-/vitest-4.0.13.tgz#42bf1dcc079736e63ba96235eccf20552feaaebd"
-  integrity sha512-QSD4I0fN6uZQfftryIXuqvqgBxTvJ3ZNkF6RWECd82YGAYAfhcppBLFXzXJHQAAhVFyYEuFTrq6h0hQqjB7jIQ==
+vitest@^4.0.15:
+  version "4.0.15"
+  resolved "https://registry.yarnpkg.com/vitest/-/vitest-4.0.15.tgz#bb65e8289d49c89bc3c1dba8e1bf9c13f039c6b0"
+  integrity sha512-n1RxDp8UJm6N0IbJLQo+yzLZ2sQCDyl1o0LeugbPWf8+8Fttp29GghsQBjYJVmWq3gBFfe9Hs1spR44vovn2wA==
   dependencies:
-    "@vitest/expect" "4.0.13"
-    "@vitest/mocker" "4.0.13"
-    "@vitest/pretty-format" "4.0.13"
-    "@vitest/runner" "4.0.13"
-    "@vitest/snapshot" "4.0.13"
-    "@vitest/spy" "4.0.13"
-    "@vitest/utils" "4.0.13"
-    debug "^4.4.3"
+    "@vitest/expect" "4.0.15"
+    "@vitest/mocker" "4.0.15"
+    "@vitest/pretty-format" "4.0.15"
+    "@vitest/runner" "4.0.15"
+    "@vitest/snapshot" "4.0.15"
+    "@vitest/spy" "4.0.15"
+    "@vitest/utils" "4.0.15"
     es-module-lexer "^1.7.0"
     expect-type "^1.2.2"
     magic-string "^0.30.21"
+    obug "^2.1.1"
     pathe "^2.0.3"
     picomatch "^4.0.3"
     std-env "^3.10.0"
     tinybench "^2.9.0"
-    tinyexec "^0.3.2"
+    tinyexec "^1.0.2"
     tinyglobby "^0.2.15"
     tinyrainbow "^3.0.3"
     vite "^6.0.0 || ^7.0.0"
