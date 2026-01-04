@@ -15,6 +15,7 @@ WORKDIR /app
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends \
+    fonts-lato \
     texlive-latex-base \
     texlive-binaries \
     texlive-base \
