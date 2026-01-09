@@ -3,17 +3,19 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	docs "github.com/GEWIS/pdf-compiler/docs"
-	"github.com/go-chi/chi/v5"
-	"github.com/rs/zerolog"
-	"github.com/rs/zerolog/log"
-	httpSwagger "github.com/swaggo/http-swagger/v2"
 	"io"
 	"net/http"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
+
+	docs "github.com/GEWIS/pdf-compiler/docs"
+	"github.com/go-chi/chi/v5"
+	"github.com/pdfcpu/pdfcpu/pkg/api"
+	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+	httpSwagger "github.com/swaggo/http-swagger/v2"
 )
 
 var (
@@ -218,6 +220,11 @@ func CompileHTML(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		_ = json.NewEncoder(w).Encode(ErrorResponse{Error: "Failed to generate PDF: " + compileLog.String()})
 		return
+	}
+
+	// Strip the /Title metadata from the PDF
+	if err := api.RemovePropertiesFile(pdfPath, "", []string{"Title"}, nil); err != nil {
+		log.Error().Err(err).Msg("failed to remove PDF properties")
 	}
 
 	pdfFile, err := os.Open(pdfPath)
