@@ -24,16 +24,16 @@
   "devDependencies": {
     "@gewis/eslint-config-typescript": "^2.4.0",
     "@gewis/prettier-config": "^2.2.2",
-    "@hey-api/openapi-ts": "^0.90.4",
-    "@types/node": "^25.0.9",
+    "@hey-api/openapi-ts": "^0.90.10",
+    "@types/node": "^25.0.10",
     "@useoptic/optic": "^1.0.9",
     "canvas": "^3.2.1",
     "eslint": "^9.39.2",
     "pdfjs-dist": "^5.4.530",
     "pixelmatch": "^7.1.0",
-    "prettier": "^3.8.0",
+    "prettier": "^3.8.1",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.17"
+    "vitest": "^4.0.18"
   },
   "publishConfig": {
     "access": "public"
