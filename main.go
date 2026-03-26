@@ -33,6 +33,8 @@ var (
 func main() {
 	r := chi.NewRouter()
 
+	docs.SwaggerInfo.BasePath = basePath
+
 	l, err := zerolog.ParseLevel(logLevel)
 	if err != nil {
 		log.Fatal().Err(err).Msg("could not parse level")
