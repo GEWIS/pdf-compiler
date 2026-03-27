@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"time"
 	"strings"
 
 	docs "github.com/GEWIS/pdf-compiler/docs"
@@ -40,6 +41,8 @@ func main() {
 		log.Fatal().Err(err).Msg("could not parse level")
 	}
 	zerolog.SetGlobalLevel(l)
+
+	r.Use(requestLogger)
 
 	r.Route(basePath, func(r chi.Router) {
 		r.Post("/compile", Compile)
@@ -146,6 +149,34 @@ func Compile(w http.ResponseWriter, r *http.Request) {
 	if _, err := io.Copy(w, pdfFile); err != nil {
 		log.Error().Err(err).Msg("failed to write PDF to response")
 	}
+}
+
+type statusRecorder struct {
+	http.ResponseWriter
+	status int
+}
+
+func (r *statusRecorder) WriteHeader(code int) {
+	r.status = code
+	r.ResponseWriter.WriteHeader(code)
+}
+
+func requestLogger(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		start := time.Now()
+		log.Info().
+			Str("method", r.Method).
+			Str("path", r.URL.Path).
+			Msg("incoming request")
+		rec := &statusRecorder{ResponseWriter: w, status: http.StatusOK}
+		next.ServeHTTP(rec, r)
+		log.Info().
+			Str("method", r.Method).
+			Str("path", r.URL.Path).
+			Int("status", rec.status).
+			Dur("duration", time.Since(start)).
+			Msg("request")
+	})
 }
 
 func extractLatexError(log string) string {
