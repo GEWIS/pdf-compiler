@@ -54,6 +54,7 @@ RUN apt-get update \
     libxrender1 \
     libxss1 \
     libxtst6 \
+    curl \
     lsb-release \
     xdg-utils \
  && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg \
