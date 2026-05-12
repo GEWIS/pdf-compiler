@@ -14,11 +14,11 @@ jobs:
     needs: versioning
     if: ${{ needs.versioning.outputs.next-version != '' }}
     with:
-      projects: "['.']"
+      projects: '["."]'
       version: ${{ needs.versioning.outputs.next-version }}
       docker-registry: "abc.docker-registry.gewis.nl"
       github-registry: 'true'
-      docker-paths: "['eou/pdf-compiler']"
+      docker-paths: '["eou/pdf-compiler"]'
     secrets:
       REGISTRY_USERNAME: ${{ secrets.SVC_GH_ABCEOU_USERNAME }}
       REGISTRY_PASSWORD: ${{ secrets.SVC_GH_ABCEOU_PWD }}
