@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 import { describe, it, expect } from 'vitest';
 import { createCanvas } from 'canvas';
 import pixelmatch from 'pixelmatch';
-import { getDocument } from 'pdfjs-dist';
+import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs';
 import {client, getHealth, postCompile, postCompileHtml} from '../src';
 
 const baseUrl = process.env.OPTIC_PROXY ?? 'http://127.0.0.1:8080/api/v1';
