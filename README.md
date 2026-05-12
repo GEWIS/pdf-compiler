@@ -9,30 +9,91 @@
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 </div>
 
-`pdf-compiler` is a simple LaTeX and HTML → PDF compiler over HTTP, written in Go. It supports compiling LaTeX documents using pdflatex and HTML documents using headless Chrome.
+`pdf-compiler` is a simple LaTeX and HTML → PDF compiler over HTTP, written in Go. It supports compiling LaTeX documents using `pdflatex` and HTML documents using headless Chrome.
 
 ## Prerequisites
-- Go 1.24+
-- `swag`, see [here](https://github.com/swaggo/swag#installation) for installation instructions
-- `docker`
 
-## Usage
-The default make target will run swag and build the application.
+- Go 1.25+
+- [`swag`](https://github.com/swaggo/swag#installation) — for generating Swagger docs
+- `docker` — for running the full stack
+
+## Build
+
+The default make target vendors dependencies, generates Swagger docs, and builds the binary:
+
 ```bash
 make
 ```
-To run the application, use the following command:
+
+Run it:
+
 ```bash
 ./pdf-compiler
 ```
 
-View the Swagger UI at `http://localhost:8080/swagger/index.html`.
+Other useful targets:
+
+| Target | Description |
+|---|---|
+| `make swag` | Regenerate Swagger docs from source annotations |
+| `make templates_sync` | Clone the private LaTeX templates repo into `./templates` |
+| `make clean` | Remove the built binary and templates directory |
+| `make update` | Update all Go dependencies to their latest versions |
+
+## Running with Docker
+
+The canonical way to run the full stack (pdf-compiler + texlive sidecar + templates):
+
+```bash
+docker compose up
+```
+
+The service is then reachable at `http://localhost:8080`.
+
+## Configuration
+
+All options are read from environment variables (or a `.env` file in the working directory):
+
+| Variable | Default | Description |
+|---|---|---|
+| `BASE_PATH` | `/api/v1` | HTTP path prefix for all API routes |
+| `PORT` | `:8080` | Listen address (e.g. `:80`) |
+| `TEMPLATE_DIR` | `templates` | Directory added to `TEXINPUTS` for LaTeX templates |
+| `LOG_LEVEL` | `info` | Zerolog level (`trace`, `debug`, `info`, `warn`, `error`) |
+| `PATH_TO_CHROME_BIN` | `google-chrome-stable` | Path or name of the Chrome binary used for HTML→PDF |
+
+## API
+
+### `POST /compile`
+
+Compiles a LaTeX document to PDF.
+
+```json
+{ "tex": "\\documentclass{article}\n\\begin{document}\nHello!\n\\end{document}" }
+```
+
+Returns `application/pdf` on success, or a JSON error on failure.
+
+### `POST /compile-html`
+
+Compiles an HTML document to PDF using headless Chrome.
+
+```json
+{ "html": "<html><body><h1>Hello!</h1></body></html>" }
+```
+
+Returns `application/pdf` on success.
+
+### `GET /health`
+
+Returns `200 OK`.
 
 ## Documentation
-The easiest way to view the documentation is to start the application and navigate to `http://localhost:8080/swagger/index.html`.
 
-The files can also be found in the `docs` directory.
+Interactive Swagger UI: `http://localhost:8080/swagger/index.html`
 
-## Client
+Raw spec: `http://localhost:8080/swagger/doc.json` — also committed to the `docs/` directory.
 
-The pdf-compiler also comes with a client written in TypeScript. The client can be found in the `client` directory. See the [README](client/README.md) for more information.
+## TypeScript Client
+
+A generated TypeScript client is published to npm. See the [client README](client/README.md) for usage.
