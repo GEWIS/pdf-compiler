@@ -24,8 +24,8 @@
   "devDependencies": {
     "@gewis/eslint-config-typescript": "^2.4.0",
     "@gewis/prettier-config": "^2.2.2",
-    "@hey-api/openapi-ts": "^0.97.1",
-    "@types/node": "^25.8.0",
+    "@hey-api/openapi-ts": "^0.97.2",
+    "@types/node": "^25.9.1",
     "@useoptic/optic": "^1.0.9",
     "canvas": "^3.2.3",
     "eslint": "^10.4.0",
@@ -33,7 +33,7 @@
     "pixelmatch": "^7.2.0",
     "prettier": "^3.8.3",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.7"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^8.59.0",
