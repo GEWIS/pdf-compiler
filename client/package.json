@@ -24,8 +24,8 @@
   "devDependencies": {
     "@gewis/eslint-config-typescript": "^2.4.0",
     "@gewis/prettier-config": "^2.2.2",
-    "@hey-api/openapi-ts": "^0.98.2",
-    "@types/node": "^25.9.3",
+    "@hey-api/openapi-ts": "^0.99.0",
+    "@types/node": "^26.0.0",
     "@useoptic/optic": "^1.0.9",
     "canvas": "^3.2.3",
     "eslint": "^10.5.0",
