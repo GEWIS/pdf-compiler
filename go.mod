@@ -3,7 +3,7 @@ module github.com/GEWIS/pdf-compiler
 go 1.25.0
 
 require (
-	github.com/go-chi/chi/v5 v5.3.0
+	github.com/go-chi/chi/v5 v5.3.1
 	github.com/joho/godotenv v1.5.1
 	github.com/pdfcpu/pdfcpu v0.13.0
 	github.com/rs/zerolog v1.35.1
