@@ -7,10 +7,10 @@ on:
 
 jobs:
   versioning:
-    uses: GEWIS/actions/.github/workflows/versioning.yml@v1
+    uses: GEWIS/actions/.github/workflows/versioning.yml@v1.16.3
 
   release-server:
-    uses: GEWIS/actions/.github/workflows/docker-release.yml@v1
+    uses: GEWIS/actions/.github/workflows/docker-release.yml@v1.16.3
     needs: versioning
     if: ${{ needs.versioning.outputs.next-version != '' }}
     with:
@@ -24,7 +24,7 @@ jobs:
       REGISTRY_PASSWORD: ${{ secrets.SVC_GH_ABCEOU_PWD }}
 
   release-client:
-      uses: GEWIS/actions/.github/workflows/npm-release.yml@v1
+      uses: GEWIS/actions/.github/workflows/npm-release.yml@v1.16.3
       needs: versioning
       if: ${{ needs.versioning.outputs.next-version != '' }}
       with:
