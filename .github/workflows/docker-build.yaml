@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   build:
-    uses: GEWIS/actions/.github/workflows/docker-build.yml@v1.16.3
+    uses: GEWIS/actions/.github/workflows/docker-build.yml@v1.16.5
     with:
       projects: '["."]'
       docker-registry: 'abc.docker-registry.gewis.nl'
